@@ -69,7 +69,7 @@ if submit:
     prediction = model.predict(X_scaled)[0]
     st.write("Raw prediction (0 = No Churn, 1 = Churn):", prediction)
     if prediction == 1:
-    st.error(f"🔴 Customer is likely to churn. Probability: {probability * 100:.2f}%")
+    	st.error(f"🔴 Customer is likely to churn. Probability: {probability * 100:.2f}%")
     else:
-    st.success(f"🟢 Customer is not likely to churn. Probability: {(1 - probability) * 100:.2f}%")
+    	st.success(f"🟢 Customer is not likely to churn. Probability: {(1 - probability) * 100:.2f}%")
 
