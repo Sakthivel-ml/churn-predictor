@@ -65,7 +65,11 @@ def encode_input():
 if submit:
     X_input = encode_input()
     X_scaled = scaler.transform(X_input)
+    probability = model.predict_proba(X_scaled)[0][1]
     prediction = model.predict(X_scaled)[0]
     st.write("Raw prediction (0 = No Churn, 1 = Churn):", prediction)
-    result = "🔴 Customer is likely to churn." if prediction == 1 else "🟢 Customer is not likely to churn."
-    st.success(result)
+    if prediction == 1:
+    st.error(f"🔴 Customer is likely to churn. Probability: {probability * 100:.2f}%")
+    else:
+    st.success(f"🟢 Customer is not likely to churn. Probability: {(1 - probability) * 100:.2f}%")
+
