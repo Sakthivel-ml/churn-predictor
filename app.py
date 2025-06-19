@@ -66,5 +66,6 @@ if submit:
     X_input = encode_input()
     X_scaled = scaler.transform(X_input)
     prediction = model.predict(X_scaled)[0]
+    st.write("Raw prediction (0 = No Churn, 1 = Churn):", prediction)
     result = "🔴 Customer is likely to churn." if prediction == 1 else "🟢 Customer is not likely to churn."
     st.success(result)
